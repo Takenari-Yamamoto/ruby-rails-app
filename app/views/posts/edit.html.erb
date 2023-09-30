@@ -1,4 +1,4 @@
-<h1>新しい投稿</h1>
+<h1>投稿編集</h1>
 
 <%= form_with model: @post do |form| %>
     <div>
@@ -10,6 +10,6 @@
         <%=form.text_area :content %>
     </div>
     <div>
-        <%=form.submit "投稿" %>
+        <%=form.submit "編集" %>
     </div>
 <% end %>

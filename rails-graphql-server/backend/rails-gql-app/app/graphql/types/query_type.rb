@@ -10,7 +10,7 @@ module Types
       context.schema.object_from_id(id, context)
     end
 
-    field :nodes, [Types::NodeType, null: true], null: true, description: "Fetches a list of objects given a list of IDs." do
+    field :nodes, [Types::NodeType], null: true, description: "Fetches a list of objects given a list of IDs." do
       argument :ids, [ID], required: true, description: "IDs of the objects."
     end
 
@@ -18,14 +18,10 @@ module Types
       ids.map { |id| context.schema.object_from_id(id, context) }
     end
 
-    module Types
-      class QueryType < Types::BaseObject
-        field :todos, [Types::TodoType], null: false
+    field :todos, [Types::TodoType], null: false
 
-        def todos
-          Todo.all
-        end
-      end
+    def todos
+      Todo.all
     end
   end
 end
